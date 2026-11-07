@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Oneil ♡</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #eaf7e4 0%, #d4efc9 50%, #bfe5b0 100%);
+    font-family: 'Patrick Hand', cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    padding: 30px 16px;
+  }
+
+  .heart {
+    position: fixed;
+    bottom: -40px;
+    color: #5fbf6a;
+    opacity: .7;
+    animation: floatUp linear forwards;
+    pointer-events: none;
+    z-index: 0;
+  }
+  @keyframes floatUp {
+    to { transform: translateY(-115vh) rotate(25deg); opacity: 0; }
+  }
+
+  /* ---------- envelope ---------- */
+  .envelope-wrap {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  #openToggle { display: none; }
+  #openToggle:checked ~ .envelope-wrap { display: none; }
+
+  .envelope {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background: #9dd89a;
+    border-radius: 8px;
+    margin: 0 auto;
+    cursor: pointer;
+    display: block;
+    box-shadow: 0 12px 30px rgba(70, 140, 80, .3);
+    animation: wiggle 2.5s ease-in-out infinite;
+  }
+  .envelope:hover { animation-play-state: paused; }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-2deg); }
+    75% { transform: rotate(2deg); }
+  }
+  .envelope::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    background:
+      linear-gradient(to top right, #86cc84 50%, transparent 50%) left / 50% 100% no-repeat,
+      linear-gradient(to top left,  #86cc84 50%, transparent 50%) right / 50% 100% no-repeat;
+  }
+  .flap {
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 115px solid #5fb86a;
+    z-index: 2;
+  }
+  .seal {
+    position: absolute;
+    top: 88px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 38px;
+    z-index: 3;
+  }
+
+  .hint {
+    margin-top: 22px;
+    font-size: 22px;
+    color: #3f8a4a;
+  }
+  .to {
+    font-family: 'Dancing Script', cursive;
+    font-size: 34px;
+    color: #2f7a3c;
+    margin-bottom: 18px;
+  }
+
+  /* ---------- letter ---------- */
+  .letter {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+    width: 100%;
+    background:
+      repeating-linear-gradient(transparent, transparent 33px, #dcefd6 34px),
+      #fbfff7;
+    border-radius: 14px;
+    padding: 48px 40px 40px 56px;
+    box-shadow: 0 18px 45px rgba(60, 120, 70, .25);
+    display: none;
+  }
+  #openToggle:checked ~ .letter {
+    display: block;
+    animation: letterIn .8s ease forwards;
+  }
+  @keyframes letterIn {
+    from { opacity: 0; transform: translateY(40px) scale(.95); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .letter::before {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0; left: 38px;
+    width: 2px;
+    background: #a8dca0;
+  }
+  .tape {
+    position: absolute;
+    top: -14px; left: 50%;
+    width: 110px; height: 30px;
+    transform: translateX(-50%) rotate(-3deg);
+    background: rgba(170, 220, 160, .7);
+    border-radius: 3px;
+  }
+
+  .greeting {
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+    color: #3f8a4a;
+    margin-bottom: 14px;
+  }
+  .letter p {
+    font-size: 21px;
+    line-height: 34px;
+    color: #3d4a3a;
+    margin-bottom: 34px;
+  }
+  .letter .loud {
+    color: #2e9a45;
+    font-weight: bold;
+  }
+  .signoff {
+    text-align: right;
+    font-family: 'Dancing Script', cursive;
+    font-size: 32px;
+    color: #3f8a4a;
+    line-height: 1.3;
+  }
+  .stickers {
+    position: absolute;
+    bottom: 14px; left: 52px;
+    font-size: 26px;
+  }
+
+  .heart-btn {
+    display: block;
+    margin: 6px auto 0;
+    background: #5fb86a;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 22px;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 19px;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba(95, 184, 106, .4);
+    transition: transform .2s;
+  }
+  .heart-btn:hover { transform: scale(1.07); }
+  .heart-btn:active { transform: scale(.95); }
+
+  @media (max-width: 500px) {
+    .letter { padding: 40px 22px 60px 46px; }
+    .letter::before { left: 30px; }
+    .letter p { font-size: 19px; }
+    .greeting { font-size: 34px; }
+  }
+</style>
+</head>
+<body>
+
+  <input type="checkbox" id="openToggle">
+
+  <!-- Envelope -->
+  <div class="envelope-wrap">
+    <div class="to">To: Oneil ♡</div>
+    <label class="envelope" for="openToggle">
+      <span class="flap"></span>
+      <span class="seal">🦦</span>
+    </label>
+    <div class="hint">tap to open, boo ♡</div>
+  </div>
+
+  <!-- Letter -->
+  <div class="letter" id="letter">
+    <div class="tape"></div>
+
+    <div class="greeting">My dearest, Oneil,</div>
+
+    <p>
+      Sometimes you ask me if I do love you pa, but looking back from where we started, I would say:
+    </p>
+
+    <p>
+      I am not giving up on you when we don't understand each other the most. I learned a lot of
+      things the moment I met you, boo. So, I am gonna learn how to love you better than anybody
+      else ever did. I won't take advantage of your vulnerability and kindness, we will fix things,
+      I will respect you, and I will never let you question how I feel about you, because
+      <span class="loud">I will always be so damn loud about loving you, baby.</span>
+    </p>
+
+    <p>
+      Some of us may have not lived the life and the love that people deserve, but I want to build
+      a life with you, one we can call ours. Where I can love you with all of my heart.
+      <span class="loud">To love you loudly, as you deserve to be loved.</span>
+    </p>
+
+    <p>
+      You know how much I love you. Near or far, I will be there to support you through it all.
+      Know there are too many mediocre things in life. And I sure as hell won't let my love for you
+      be one of them.
+    </p>
+
+    <div class="signoff">
+      I love you, boo, always. ^_^<br>
+      — kaye ♡
+    </div>
+
+    <button class="heart-btn" id="moreLove">♡</button>
+
+    <div class="stickers">🦦</div>
+  </div>
+
+<script>
+  const hearts = ['♡'];
+
+  function spawnHeart() {
+    const h = document.createElement('span');
+    h.className = 'heart';
+    h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+    h.style.left = Math.random() * 100 + 'vw';
+    h.style.fontSize = (14 + Math.random() * 22) + 'px';
+    h.style.animationDuration = 3 + Math.random() * 4 + 's';
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 8000);
+  }
+
+  document.getElementById('openToggle').addEventListener('change', () => {
+    for (let i = 0; i < 25; i++) setTimeout(spawnHeart, i * 60);
+  });
+
+  document.getElementById('moreLove').addEventListener('click', () => {
+    for (let i = 0; i < 40; i++) setTimeout(spawnHeart, i * 40);
+  });
+</script>
+</body>
+</html>
